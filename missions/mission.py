@@ -20,3 +20,15 @@ class Mission():
 
     def get_story(self):
         return self.story
+
+    def step_1(self,
+               question,
+               option_1,
+               option_2,
+               option_3):
+
+        print(question)
+        print(option_1)
+        print(option_2)
+        print(option_3)
+
