@@ -1,6 +1,7 @@
 from actor import Actor
 from missions.mission import Mission
-import pyglet
+from colorama import Fore, Back, Style
+import os
 
 # create Adiv character
 adiv = Actor(name='Adiv',
@@ -13,14 +14,14 @@ initial_story = ('Em 2021 Júpiter, um planeta 300 anos mais avançado do que a'
                  ' Terra, após uma reunião do Comando Estelar, recebeu a '
                  ' missão de preparar um planeta p/ receber a cada 360 dias, '
                  '10 dos homens e mulheres que mais contribuíram p/ o avanço '
-                 'do Planeta Terra. O planeta escolhido para receber esta '
+                 'do Planeta Terra. \n\nO planeta escolhido para receber esta '
                  'nova população chama-se Planeta 9, e apresenta condições '
                  'atmosféricas parecidas com as encontradas na terra, assim '
                  'os novos habitantes não precisarão de grandes mudanças p/ '
-                 'se adaptar. Para esta missão foram designados 7 cientistas, '
-                 'dentre eles está Adiv chefe espacial com poderes especiais, '
-                 'que tem a missão de viajar até o Planeta Terra e '
-                 'transportar os 10 novos habitantes p/ o Planeta 9.')
+                 'se adaptar.\n\nPara esta missão foram designados 7 '
+                 'cientistas, dentre eles está Adiv chefe espacial com '
+                 'poderes especiais, que tem a missão de viajar até o Planeta '
+                 'Terra e transportar os 10 novos habitantes p/ o Planeta 9.')
 
 first_mission = Mission(difficulty=1,
                         planet_name='Júpiter',
@@ -28,27 +29,25 @@ first_mission = Mission(difficulty=1,
                         planet_population=10,
                         story=initial_story)
 
+os.system('clear')
 
-window = pyglet.window.Window()
+# menu
+print(Back.BLACK, Fore.GREEN + '########################################')
+print(Back.BLACK, Fore.GREEN + '# PLANETA 9 (versao alpha 0.0.1)       #')
+print(Back.BLACK, Fore.GREEN + '# Desenvolvedores:                     #')
+print(Back.BLACK, Fore.GREEN + '# Joao Vanzuita <joaovanzuita@me.com>  #')
+print(Back.BLACK, Fore.GREEN + '# Paulo Vanzuita <pvanzuita@gmail.com> #')
+print(Back.BLACK, Fore.GREEN + '########################################')
+print(Back.BLACK, Fore.GREEN + '#                                      #')
+print(Back.BLACK, Fore.GREEN + '# 1 - Iniciar                          #')
+print(Back.BLACK, Fore.GREEN + '# 2 - Sair                             #')
+print(Back.BLACK, Fore.GREEN + '#                                      #')
+print(Back.BLACK, Fore.GREEN + '########################################')
+menu_opcao = int(input('Opcao: '))
 
-label = pyglet.text.Label(first_mission.get_story()[:80],
-                          font_name='Verdana',
-                          font_size=14,
-                          x=window.width//2, y=window.height//2,
-                          anchor_x='center', anchor_y='center')
+if menu_opcao == 1:
+    print(Back.BLUE + Fore.WHITE + first_mission.get_story())
+    print(Style.RESET_ALL)
+    
 
-label2 = pyglet.text.Label('teste',
-                           font_name='Times New Roman',
-                           font_size=10,
-                           x=window.width//3, y=window.height//3,
-                           anchor_x='center', anchor_y='center')
-
-
-@window.event
-def on_draw():
-    window.clear()
-    label.draw()
-    label2.draw()
-
-
-pyglet.app.run()
+print(Style.RESET_ALL)
