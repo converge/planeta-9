@@ -32,3 +32,11 @@ class Mission():
         print(option_2)
         print(option_3)
 
+    def step_2(self,
+               question,
+               option_1,
+               option_2):
+
+        print(question)
+        print(option_1)
+        print(option_2)

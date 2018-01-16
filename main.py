@@ -2,6 +2,7 @@ from actor import Actor
 from missions.mission import Mission
 from colorama import Fore, Back, Style
 import os
+from time import sleep
 
 # create Adiv character
 adiv = Actor(name='Adiv',
@@ -50,6 +51,16 @@ def menu():
     if menu_opcao == 1:
         os.system('clear')
         print(Back.BLUE + Fore.WHITE + first_mission.get_story())
+    elif menu_opcao == 2:
+        exit()
+
+def contagem_regressiva():
+    x = 5
+    print('Contagem regressiva..')
+    while(x != 0):
+        print(x)
+        sleep(3)
+        x = x - 1
 
 
 def get_adiv_status():
@@ -83,6 +94,16 @@ elif answer == 3:
     adiv.set_wisdom(adiv.get_wisdom() + 1)
 
 get_adiv_status()
+
+question = ('Chegou o momento da decolagem, está tudo pronto p/ a partida.')
+option_1 = '1 - Confirmar decolagem'
+option_2 = '2 - Abandonar missão'
+first_mission.step_2(question, option_1, option_2)
+answer = int(input())
+if answer == 1:
+    contagem_regressiva()
+elif answer == 2:
+    print('Missão abandonada, retornando p/ casa...')
 
 # quando sair, limpa cores
 print(Style.RESET_ALL)
